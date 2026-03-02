@@ -20,6 +20,7 @@ APP_DIR="/opt/studio-app"
 DATA_DIR="/data/studio-app"
 DOMAIN="studio-app.orionconsultoria.cloud"
 REPO_URL="https://github.com/orionrepresent-dev/Ggrowht-business-SaaS.git"
+REPO_BRANCH="main"
 
 # ============================================================
 # 1. Criar diretórios
@@ -35,10 +36,10 @@ chmod 755 $DATA_DIR
 echo -e "${YELLOW}📥 Clonando/atualizando código...${NC}"
 if [ -d "$APP_DIR/.git" ]; then
     cd $APP_DIR
-    git pull origin main
+    git pull origin $REPO_BRANCH
 else
     rm -rf $APP_DIR/*
-    git clone $REPO_URL $APP_DIR
+    git clone -b $REPO_BRANCH $REPO_URL $APP_DIR
     cd $APP_DIR
 fi
 
